@@ -18,4 +18,8 @@ while True:
         break
     print ("Received %s bytes from %s %s: " % (len(buf), address, buf ))
 
+    # Send back ack
+    data = "ACK: " + buf.decode("utf-8")
+    s.sendto(data.encode('utf-8'), address)
+
 s.shutdown(1)
